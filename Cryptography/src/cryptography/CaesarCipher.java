@@ -30,6 +30,10 @@ public class CaesarCipher {
 		return encrypted.toString();
 	}
 
+	public static String decrypt(String input, int key) {
+		return encrypt(input, 26-key);
+	}
+	
 	public static void testCaesar() {
 		FileResource fr = new FileResource();
 		String message = fr.asString();
