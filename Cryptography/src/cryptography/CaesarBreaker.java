@@ -56,17 +56,25 @@ public class CaesarBreaker {
 	// to calculate the index of the largest letter frequency
 	public int getKey(String message) {
 		int[] freq = countLetters(message);
-		return maxIndex(freq);
+		int maxDex = maxIndex(freq);
+		int dkey = maxDex - 4;
+		if (maxDex < 4) {
+			dkey = 26 - (4 - maxDex);
+		}
+		return dkey;
 	}
 	
 	public String decryptTwoKeys(String encrypted) {
+		CaesarCipher cc = new CaesarCipher();
 		String s1 = halfOfString(encrypted, 0);
 		String s2 = halfOfString(encrypted, 1);
-		System.out.println("key 1 is " + getKey(s1));
-		System.out.println("key 2 is " + getKey(s2));
+		int key1 = getKey(s1);
+		int key2 = getKey(s2);
+		System.out.println("key 1 is " + key1);
+		System.out.println("key 2 is " + key2);
 		StringBuilder result = new StringBuilder(encrypted);
-		String ds1 = decrypt(s1);
-		String ds2 = decrypt(s2);
+		String ds1 = cc.encrypt(s1, 26-key1);
+		String ds2 = cc.encrypt(s2, 26-key2);
 		for (int i = 0; i < ds1.length(); i++) {
 			result.setCharAt(i * 2, ds1.charAt(i));
 		}
