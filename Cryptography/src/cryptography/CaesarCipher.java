@@ -4,13 +4,7 @@ import edu.duke.*;
 
 public class CaesarCipher {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println(encryptTwoKeys(
-				"At noon be in the conference room with your hat on for a surprise party. YELL LOUD!", 8, 21));
-	}
-
-	public static String encrypt(String input, int key) {
+	public String encrypt(String input, int key) {
 		StringBuilder encrypted = new StringBuilder(input);
 		String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		String shiftedAlphabet = alphabet.substring(key) + alphabet.substring(0, key);
@@ -30,14 +24,14 @@ public class CaesarCipher {
 		return encrypted.toString();
 	}
 
-	public static void eyeballDecrypt(String input) {
+	public void eyeballDecrypt(String input) {
 		for (int k=0;k<26;k++) {
 			String s = encrypt(input, k);
 			System.out.println(k + " " + s);
 		}
 	}
 	
-	public static void testCaesar() {
+	public void testCaesar() {
 		FileResource fr = new FileResource();
 		String message = fr.asString();
 		int key = 1;
@@ -45,7 +39,7 @@ public class CaesarCipher {
 		System.out.println("key is " + key + "\n" + encrypted);
 	}
 
-	public static String encryptTwoKeys(String input, int key1, int key2) {
+	public String encryptTwoKeys(String input, int key1, int key2) {
 		StringBuilder result = new StringBuilder(input);
 		for (int i = 0; i < input.length(); i++) {
 			String thisChar = String.valueOf(input.charAt(i));
