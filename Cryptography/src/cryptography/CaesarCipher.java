@@ -30,8 +30,11 @@ public class CaesarCipher {
 		return encrypted.toString();
 	}
 
-	public static String decrypt(String input, int key) {
-		return encrypt(input, 26-key);
+	public static void eyeballDecrypt(String input) {
+		for (int k=0;k<26;k++) {
+			String s = encrypt(input, k);
+			System.out.println(k + " " + s);
+		}
 	}
 	
 	public static void testCaesar() {
