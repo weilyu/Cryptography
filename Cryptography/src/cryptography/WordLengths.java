@@ -35,7 +35,12 @@ public class WordLengths {
 		if (!Character.isLetter(word.charAt(word.length() - 1))) {
 			len--;
 		}
-		return len;
+		if (len <= 0) {
+			return 0;
+		} else {
+			return len;
+		}
+		
 	}
 
 	// return the index position of the largest element in values
